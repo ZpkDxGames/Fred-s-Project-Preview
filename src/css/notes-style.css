@@ -1,0 +1,195 @@
+/* Estilos gerais */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilos do cabeçalho */
+.app-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: popup 0.8s ease-out forwards;
+    width: fit-content;
+}
+
+.titulo-principal {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* Estilos do contêiner principal */
+.feed-container {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: ascend 0.8s ease-out forwards;
+}
+
+/* Estilos dos posts */
+.post {
+    position: relative;
+    overflow: visible; /* allow overlay and border to show */
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.post::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    z-index: 0;
+    border-radius: 18px;
+    pointer-events: none;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.18);
+    background: inherit;
+    filter: blur(4px) brightness(1.07); /* less blur */
+    opacity: 0.6;
+}
+
+.post-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    max-width: 260px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #fff;
+    background: rgba(0,0,0,0.48);
+    padding: 0.7em 0.5em;
+    border-radius: 10px;
+    z-index: 2;
+    pointer-events: none;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+}
+
+.post-blur {
+    filter: blur(3px); /* less blur */
+    pointer-events: none;
+    user-select: none;
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+}
+
+.author-name, .post-date {
+    background-color: #f1f3f5;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #495057;
+}
+
+.post-content {
+    font-size: 1rem;
+    color: #495057;
+    line-height: 1.6;
+    text-align: justify;
+    filter: blur(6px);
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Estilos do rodapé */
+.app-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 6px 30px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    animation: popup 0.8s ease-out forwards;
+    width: fit-content;
+    font-size: 0.85rem;
+    color: #2c3e50;
+}
+
+.credits-background {
+    background: url('../images/notes-background.webp');
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.return-button {
+    position: absolute;
+    top: 10px; /* Alinhado ao canto superior esquerdo */
+    left: 10px;
+    width: 35px; /* Mesmo tamanho do botão de créditos */
+    height: 35px;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    background-image: url('../images/return-icon.png');
+    background-size: cover; /* Garante que a imagem preencha o botão */
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, opacity 0.3s ease;
+}
+
+.return-button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.no-justify {
+    text-align: left;
+}
+
+/* Animações */
+@keyframes ascend {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popup {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
